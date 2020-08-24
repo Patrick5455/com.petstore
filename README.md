@@ -2,7 +2,8 @@
 
 ## About Project 
 > A springboot application for a pet store
-[website](to be added soon)
+
+> [website](to be added soon)
 
 ## Usecases
 - User can view pets
