@@ -6,6 +6,7 @@ import com.petstore.petstoreapp.models.PetTypes;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -32,6 +33,7 @@ class PetRepoTest {
     void tearDown() {
     }
 
+    @Test
     void createPetObjectThenSaveToDatabase(){
 
         Pet pet = new Pet();
@@ -46,5 +48,12 @@ class PetRepoTest {
         // Log records
         log.info("Created Pet Object ---> " + pet);
         assertThat(pet.getId()).isNull();
+
+        //save pet object to the database
+        petRepo.save(pet);
+        log.info("After saving pet object ----> "+ pet);
+        assertThat(pet.getId()).isNotNull();
+
+
     }
 }
