@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.Id;
 
 @Repository
-public interface StoreRepo extends JpaRepository<Store, Id> {
+public interface StoreRepo extends JpaRepository<Store, Integer> {
 
 }

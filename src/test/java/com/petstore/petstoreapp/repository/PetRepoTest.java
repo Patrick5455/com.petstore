@@ -9,15 +9,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
 
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Logger;
 
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-//@Slf4j // lombok annotaion for logging
+@Sql(scripts = {"classpath:db/insert-pet.sql"})
+//@Slf4j // lombok annotaion for loggin
 class PetRepoTest {
 
     Logger log = Logger.getLogger(getClass().getName());
@@ -25,8 +29,14 @@ class PetRepoTest {
     @Autowired
     private PetRepo petRepo;
 
+    Pet testPetData;
+
     @BeforeEach
     void setUp() {
+
+        testPetData = petRepo.findById(200).orElse(null);
+        assertThat(testPetData).isNotNull();
+        log.info("Test pet data retrieved first database -->"+testPetData);
     }
 
     @AfterEach
@@ -34,7 +44,7 @@ class PetRepoTest {
     }
 
     @Test
-    void createPetObjectThenSaveToDatabase(){
+    void createPetObject_thenSaveToDatabase(){
 
         Pet pet = new Pet();
 
@@ -50,10 +60,29 @@ class PetRepoTest {
         assertThat(pet.getId()).isNull();
 
         //save pet object to the database
-        petRepo.save(pet);
+        pet = petRepo.save(pet);
         log.info("After saving pet object ----> "+ pet);
         assertThat(pet.getId()).isNotNull();
 
-
     }
+
+    @Test
+    void whenFindAllPetsIsCalled_thenRetrievePetListTest(){
+
+        List<Pet> allPets = petRepo.findAll();
+        assertThat(allPets.size()).isEqualTo(8);
+        log.info("All pets retrived from the database -->"+ allPets);
+    }
+
+
+    @Test
+    void whenPetDetailsIsUpdated_thenDatabaseIsUpdated(){
+
+        assertThat(testPetData.getName()).isEqualTo("bobby");
+        testPetData.setName("Jira");
+        assertThat(testPetData.getName()).isEqualTo("jira");
+    }
+
+
+
 }

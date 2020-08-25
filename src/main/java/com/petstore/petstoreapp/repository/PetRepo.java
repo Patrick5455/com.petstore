@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.Id;
 
 @Repository
-public interface PetRepo extends JpaRepository<Pet, Id> {
+public interface PetRepo extends JpaRepository<Pet, Integer> {
 
 
 }
