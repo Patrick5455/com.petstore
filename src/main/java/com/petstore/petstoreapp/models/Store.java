@@ -3,6 +3,7 @@ package com.petstore.petstoreapp.models;
 import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "store")
 public class Store{
@@ -16,6 +17,9 @@ public class Store{
 
     @Column(nullable = false)
     private Integer storeNumber;
+
+    @OneToMany // one store to Many Pet
+    private List<Pet> petList;
 
     public Integer getId() {
         return Id;

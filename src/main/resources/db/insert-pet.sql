@@ -1,8 +1,8 @@
 SET FOREIGN_KEY_CHECKS = 0; #this encures sql does not check for foreign keys
 
-TRUNCATE TABLE pet_animal;
+TRUNCATE TABLE pet;
 
-INSERT INTO pet_animal(`id`, `breed`, `name`, `types`, `sex`, `age`)
+INSERT INTO pet(`id`, `breed`, `name`, `types`, `sex`, `age`)
 
 VALUES(200,'bobby', 'german_sheperd', 'DOG', 'MALE', 15),
       (300,'bobby', 'german_sheperd', 'DOG', 'MALE', 15),

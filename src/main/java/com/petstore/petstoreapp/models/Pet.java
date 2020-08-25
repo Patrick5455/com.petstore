@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "pet_animal")
+@Table()
 public class Pet {
 
 

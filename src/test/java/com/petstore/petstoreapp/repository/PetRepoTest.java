@@ -84,5 +84,24 @@ class PetRepoTest {
     }
 
 
+    @Test
+    void  whenDeleteIsCalled_thenDeletePetDataTest(){
+
+        List<Pet> allPets = petRepo.findAll();
+        assertThat(allPets).isNotNull();
+        assertThat(allPets.size()).isEqualTo(8);
+
+        Pet savedPet = petRepo.findById(300).orElse(null);
+        assertThat(savedPet).isNotNull();
+        petRepo.deleteById(300);
+
+        Pet deletedPet = petRepo.findById(300).orElse(null);
+        assertThat(deletedPet).isNull();
+
+        allPets = petRepo.findAll();
+        assertThat(allPets).isNotNull();
+        assertThat(allPets.size()).isEqualTo(7);
+    }
+
 
 }
