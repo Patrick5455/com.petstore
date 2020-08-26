@@ -32,6 +32,10 @@ public class Pet {
     private Date birthdate;
 
 
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "store")
+    private Store petStore;
+
     public Integer getId() {
         return Id;
     }
@@ -86,6 +90,15 @@ public class Pet {
 
     public void setBirthdate(Date birthdate) {
         this.birthdate = birthdate;
+    }
+
+
+    public Store getPetStore() {
+        return petStore;
+    }
+
+    public void setPetStore(Store petStore) {
+        this.petStore = petStore;
     }
 
     @Override

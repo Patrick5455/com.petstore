@@ -18,7 +18,7 @@ public class Store{
     @Column(nullable = false)
     private Integer storeNumber;
 
-    @OneToMany // one store to Many Pet
+    @OneToMany(mappedBy = "petStore", fetch = FetchType.LAZY) // one store to Many Pet
     private List<Pet> petList;
 
     public Integer getId() {
@@ -86,5 +86,11 @@ public class Store{
         this.country = country;
     }
 
+    public List<Pet> getPetList() {
+        return petList;
+    }
 
+    public void setPetList(List<Pet> petList) {
+        this.petList = petList;
+    }
 }
