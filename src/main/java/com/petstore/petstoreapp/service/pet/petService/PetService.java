@@ -1,4 +1,4 @@
-package com.petstore.petstoreapp.service.pet.PetService;
+package com.petstore.petstoreapp.service.pet.petService;
 
 import com.petstore.petstoreapp.models.Pet;
 

@@ -1,4 +1,4 @@
-package com.petstore.petstoreapp.service.pet.PetService;
+package com.petstore.petstoreapp.service.pet.petService;
 
 import com.petstore.petstoreapp.models.Pet;
 import com.petstore.petstoreapp.repository.PetRepo;
@@ -7,10 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.context.SpringBootTest;
-import static org.mockito.Mockito.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 // Mock Test no need for SpringbootTest annotation because Mock creates mock object independent of the application context
 class PetServiceTest {
