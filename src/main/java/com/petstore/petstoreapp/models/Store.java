@@ -19,7 +19,7 @@ public class Store{
     @Column(nullable = false)
     private Integer storeNumber;
 
-    @OneToMany(mappedBy = "petStore", fetch = FetchType.LAZY, cascade = CascadeType.ALL) // one store to Many Pet
+    @OneToMany(mappedBy = "petStore", fetch = FetchType.EAGER, cascade = CascadeType.ALL) // one store to Many Pet
     private List<Pet> petList;
 
     public Integer getId() {

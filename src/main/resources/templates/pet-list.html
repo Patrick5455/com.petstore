@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Pets</title>
+</head>
+<body>
+
+<div th:switch="${storePets}">
+
+    <h2 th:case="null">No Store Added yet!</h2>
+
+    <h2>All Store</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Breed</th>
+            <th>Sex</th>
+            <th>Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pets : ${storePets}">
+            <td th:text="${pets.getName()}"></td>
+            <td th:text="${pets.getTypes()}"></td>
+            <td th:text="${pets.getBreed()}"></td>
+            <td th:text="${pets.getSex()}"></td>
+            <td th:text="${pets.getAge()}"></td>
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+<a href="/store/form">Create a new store</a>
+</body>
+</html>

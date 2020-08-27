@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+
+    <title>Spring Core MVC</title>
+</head>
+<body>
+
+
+<form action="#" th:action="@{/store/pet/save}" th:object="${storePet}" method="post">
+
+    <label for="petName">Pet Name</label>
+    <input type="text" th:field="*{name}" id="petName" placeholder="pet name">
+
+
+    <label for="breed">Breed</label>
+    <input type="text" th:field="*{breed}" id="breed" placeholder="pet breed">
+
+
+    <label for="type">Type</label>
+    <input type="text" th:field="*{types}" id="type" placeholder="pet type">
+
+
+    <label for="sex">Sex</label>
+    <input type="text" th:field="*{sex}" id="sex" placeholder="city">
+
+
+    <label for="age">Age</label>
+    <input type="text" th:field="*{age}" id="age" placeholder="pet age">
+
+
+    <input type="submit">
+</form>
+
+</body>
+</html>

@@ -21,4 +21,6 @@ public interface StoreService {
     void deleteStore(Integer id);
 
     Store addPets(Pet pet, Integer storeId) throws StoreObjectNotPresentException;
+
+    List<Pet> findStorePets(Integer storeId) throws StoreObjectNotPresentException;
 }

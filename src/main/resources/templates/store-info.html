@@ -8,6 +8,8 @@
 
     <h1>Store Details Preview</h1>
 
+    <p th:text="${storeObj.getId()}"></p>
+
     <p th:text="${storeObj.getStoreName()}"></p>
 
     <p th:text="${storeObj.getStoreNumber()}"></p>
@@ -18,7 +20,8 @@
 
     <p th:text="${storeObj.getCountry()}"></p>
 
-    <p th:text="${storeObj.getState()}"></p>
+    <a th:text="${storeObj.getState()}"></a>
 
+<a href="/">Go back</a>
 </body>
 </html>
