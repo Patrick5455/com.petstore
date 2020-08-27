@@ -3,6 +3,7 @@ package com.petstore.petstoreapp.service.store.storeService;
 import com.petstore.petstoreapp.models.Pet;
 import com.petstore.petstoreapp.models.Store;
 import com.petstore.petstoreapp.repository.StoreRepo;
+import com.petstore.petstoreapp.service.exceptions.StoreObjectNotPresentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,7 +44,29 @@ public class StoreServiceImpl  implements StoreService{
     }
 
     @Override
-    public Store addPets(Pet pet) {
-        return null;
+    public Store addPets(Pet pet, Integer storeId) throws NullPointerException, StoreObjectNotPresentException {
+
+        // validate that pet is not null
+        if(pet == null){
+            throw new NullPointerException("Pet object should not be null");
+        }
+
+        //check that store exist
+        Optional<Store> result = storeRepo.findById(storeId);
+
+        if (result.isPresent()){
+
+            Store savedStore = result.get();
+            savedStore.addPet(pet);
+
+            return storeRepo.save(savedStore);
+        }
+
+        else {
+
+            throw new StoreObjectNotPresentException("Store not present in the database");
     }
+}
+
+
 }

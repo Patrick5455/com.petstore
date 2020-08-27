@@ -87,6 +87,7 @@ public class Store{
         this.country = country;
     }
 
+
     public List<Pet> getPetList() {
         return petList;
     }
