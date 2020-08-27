@@ -3,6 +3,7 @@ package com.petstore.petstoreapp.models;
 import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "store")
@@ -18,7 +19,7 @@ public class Store{
     @Column(nullable = false)
     private Integer storeNumber;
 
-    @OneToMany(mappedBy = "petStore", fetch = FetchType.LAZY) // one store to Many Pet
+    @OneToMany(mappedBy = "petStore", fetch = FetchType.LAZY, cascade = CascadeType.ALL) // one store to Many Pet
     private List<Pet> petList;
 
     public Integer getId() {
@@ -92,5 +93,27 @@ public class Store{
 
     public void setPetList(List<Pet> petList) {
         this.petList = petList;
+    }
+
+    public void addPet(Pet onePet){
+
+        if(this.petList == null){
+            this.petList = new ArrayList<>();
+        }
+        this.petList.add(onePet);
+    }
+
+    @Override
+    public String toString() {
+        return "Store{" +
+                "Id=" + Id +
+                ", storeName='" + storeName + '\'' +
+                ", storeNumber=" + storeNumber +
+                ", petList=" + petList +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", country='" + country + '\'' +
+                '}';
     }
 }

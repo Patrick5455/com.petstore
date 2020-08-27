@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@Sql(scripts = {"classpath:db/insert-pet.sql"})
+@Sql(scripts = {"classpath:db/insert-pet.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 //@Slf4j // lombok annotaion for loggin
 class PetRepoTest {
 
@@ -28,7 +28,6 @@ class PetRepoTest {
 
     @Autowired
     private PetRepo petRepo;
-
     Pet testPetData;
 
     @BeforeEach
@@ -81,6 +80,8 @@ class PetRepoTest {
         assertThat(testPetData.getName()).isEqualTo("bobby");
         testPetData.setName("Jira");
         assertThat(testPetData.getName()).isEqualTo("jira");
+
+        assertThat(testPetData.getName()).isEqualTo("jiran");
     }
 
 

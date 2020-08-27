@@ -79,7 +79,7 @@ class PetServiceTest {
     @Test
     void deletePet() {
 
-        doNothing().when(petRepo).delete(testPet);
+        doNothing().when(petRepo).deleteById(testPet.getId());
         petService.deletePet(testPet.getId());
         verify(petRepo, times(1)).deleteById(testPet.getId());
     }
