@@ -5,6 +5,7 @@ import com.petstore.petstoreapp.repository.PetRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
 public  class PetServiceImpl implements PetService {
 
@@ -17,8 +18,9 @@ public  class PetServiceImpl implements PetService {
     }
 
     @Override
-    public Pet findPetById(Integer id) {
-        return petRepo.findById(id).orElse(null);
+    public Optional<Pet> findPetById(Integer id) {
+
+        return petRepo.findById(id);
     }
 
     @Override
